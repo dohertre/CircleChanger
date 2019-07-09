@@ -213,7 +213,7 @@ class CircleChanger(object):
         dis_y = abs(y - point.y)
 
         return ((dis_x ** 2) + (dis_y ** 2)) ** 0.5
-    
+
     def swell_or_shrink_once(self, amount_to_swell_or_shrink):
         """
         What comes in:
@@ -277,6 +277,21 @@ class CircleChanger(object):
         #   Simply   ** ASK FOR HELP **
         #            if this does not make sense to you.
         ################################################################
+        if amount_to_swell_or_shrink >= 1:
+            self.circle.radius = self.circle.radius + amount_to_swell_or_shrink
+        else:
+            self.circle.radius = self.circle.radius - amount_to_swell_or_shrink
+
+
+        # self.circle.outline_thickness = random.randrange(3, 16)
+        #
+        #
+        # r_index = random.randrange(0, len(self.colors))
+        # r_color = self.colors[r_index]
+        #
+        # self.circle.outline_color = r_color
+
+
 
     def swell_or_shrink_repeatedly(self,
                                    amount_to_swell_or_shrink,
