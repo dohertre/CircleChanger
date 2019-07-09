@@ -197,7 +197,7 @@ class CircleChanger(object):
             :type point: rg.Point
         """
         ################################################################
-        # TODO: 3.
+        # DONE: 3.
         #   First, READ the doc-string (specification) above.
         #   Second, READ the   run_test_get_distance_from   function
         #   (below).  Third, implement and test this method.
@@ -249,7 +249,7 @@ class CircleChanger(object):
             :type amount_to_swell_or_shrink: int
         """
         ################################################################
-        # TODO: 4.
+        # DONE: 4.
         #   First, READ the doc-string (specification) above.
         #   Second, READ the   run_test_swell_or_shrink_once   function
         #   (below).  Third, implement and test this method.
