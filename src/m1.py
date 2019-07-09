@@ -206,7 +206,14 @@ class CircleChanger(object):
         #   of the    rg.Point     class to compute this distance.
         #   NO CREDIT if you use the distance formula here.
         ################################################################
+        x = self.circle.center.x
+        y = self.circle.center.y
 
+        dis_x = abs(x - point.x)
+        dis_y = abs(y - point.y)
+
+        return ((dis_x ** 2) + (dis_y ** 2)) ** 0.5
+    
     def swell_or_shrink_once(self, amount_to_swell_or_shrink):
         """
         What comes in:
