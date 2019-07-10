@@ -34,8 +34,8 @@ def main():
     #     run_test_swell_or_shrink_once()
     # if m1_tests.is_implemented('swell_or_shrink_repeatedly', 4):
     #     run_test_swell_or_shrink_repeatedly()
-    # if m1_tests.is_implemented('swallow'):
-    #     run_test_swallow()
+    if m1_tests.is_implemented('swallow'):
+        run_test_swallow()
     # if m1_tests.is_implemented('change_color'):
     #     run_test_change_color()
     # if m1_tests.is_implemented('change_to_original_color'):
@@ -401,7 +401,7 @@ class CircleChanger(object):
 
         new_circle = rg.Circle(new_point, new_radius)
         new_circle.fill_color = 'red'
-        new_circle.tuple = self.tuple + self.tuple
+        new_circle.tuple = new_circle.tuple + self.tuple
         return new_circle
 
     def change_color(self, index_of_color):
