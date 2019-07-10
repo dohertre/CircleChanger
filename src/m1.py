@@ -36,8 +36,8 @@ def main():
     #     run_test_swell_or_shrink_repeatedly()
     # if m1_tests.is_implemented('swallow'):
     #     run_test_swallow()
-    # if m1_tests.is_implemented('change_color'):
-    #     run_test_change_color()
+    if m1_tests.is_implemented('change_color'):
+        run_test_change_color()
     if m1_tests.is_implemented('change_to_original_color'):
         run_test_change_to_original_color()
     if m1_tests.is_implemented('change_to_next_color_in_tuple'):
@@ -417,14 +417,13 @@ class CircleChanger(object):
             :type index_of_color: int
         """
         ################################################################
-        # TODO: 7.
+        # DONE: 7.
         #   First, READ the doc-string (specification) above.
         #   Second, READ the   run_test_change_color   function (below).
         #   Third, implement and test this method.
         ################################################################
-        # for k in range(index_of_color):
-        #     self.index_of_color = index_of_color
-        #     self.circle.fill_color = index_of_color[k]
+        for k in range(index_of_color + 1):
+            self.circle.fill_color = self.colors[index_of_color]
 
     def change_to_original_color(self):
         """
