@@ -30,10 +30,10 @@ def main():
         run_test_init()
     if m1_tests.is_implemented('get_distance_from'):
         run_test_get_distance_from()
-    if m1_tests.is_implemented('swell_or_shrink_once'):
-        run_test_swell_or_shrink_once()
-    if m1_tests.is_implemented('swell_or_shrink_repeatedly', 4):
-        run_test_swell_or_shrink_repeatedly()
+    # if m1_tests.is_implemented('swell_or_shrink_once'):
+    #     run_test_swell_or_shrink_once()
+    # if m1_tests.is_implemented('swell_or_shrink_repeatedly', 4):
+    #     run_test_swell_or_shrink_repeatedly()
     if m1_tests.is_implemented('swallow'):
         run_test_swallow()
     if m1_tests.is_implemented('change_color'):
@@ -347,8 +347,8 @@ class CircleChanger(object):
         #   Second, READ the  run_test_swell_or_shrink_repeatedly  function
         #   (below).  Third, implement and test this method.
         ################################################################
+        j = CircleChanger.swell_or_shrink_once(self.amount_to_swell_or_shrink)
 
-        j = CircleChanger.swell_or_shrink_once(amount_to_swell_or_shrink)
 
 
     def swallow(self, other_circle_changer):
@@ -387,6 +387,16 @@ class CircleChanger(object):
         #   the center and radius of the new CircleChanger.
         #   NO CREDIT if you use the distance formula here.
         ################################################################
+        new_x = (self.center.x + other_circle_changer.center.x) / 2
+        new_y = (self.center.y + other_circle_changer.center.y) / 2
+
+        radius_x = abs(self.center.x - other_circle_changer.center.x)
+        radius_y = abs(self.center.y - other_circle_changer.center.y)
+
+        new_radius = (((radius_x ** 2) + (radius_y ** 2)) ** 0.5) / 2
+
+        self.circle = rg.Circle(rg.Point(new_x, new_y), new_radius)
+        self.circle.fill_color = 'red'
 
     def change_color(self, index_of_color):
         """
