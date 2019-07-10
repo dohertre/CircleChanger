@@ -26,18 +26,18 @@ def main():
     That is, a  TEST   function will not be called
     until you begin work on the code that it is testing.
     """
-    if m1_tests.is_implemented('__init__', 20):
-        run_test_init()
-    if m1_tests.is_implemented('get_distance_from'):
-        run_test_get_distance_from()
+    # if m1_tests.is_implemented('__init__', 20):
+    #     run_test_init()
+    # if m1_tests.is_implemented('get_distance_from'):
+    #     run_test_get_distance_from()
     # if m1_tests.is_implemented('swell_or_shrink_once'):
     #     run_test_swell_or_shrink_once()
     # if m1_tests.is_implemented('swell_or_shrink_repeatedly', 4):
     #     run_test_swell_or_shrink_repeatedly()
-    if m1_tests.is_implemented('swallow'):
-        run_test_swallow()
-    if m1_tests.is_implemented('change_color'):
-        run_test_change_color()
+    # if m1_tests.is_implemented('swallow'):
+    #     run_test_swallow()
+    # if m1_tests.is_implemented('change_color'):
+    #     run_test_change_color()
     if m1_tests.is_implemented('change_to_original_color'):
         run_test_change_to_original_color()
     if m1_tests.is_implemented('change_to_next_color_in_tuple'):
@@ -106,6 +106,7 @@ class CircleChanger(object):
         for k in range(len(colors)):
             self.colors = colors
             self.circle.outline_color = colors[k]
+        self.start_color = fill_color
 
     def __repr__(self):
         """
@@ -349,8 +350,6 @@ class CircleChanger(object):
         ################################################################
         j = CircleChanger.swell_or_shrink_once(self.amount_to_swell_or_shrink)
 
-
-
     def swallow(self, other_circle_changer):
         """
         What comes in:
@@ -423,6 +422,9 @@ class CircleChanger(object):
         #   Second, READ the   run_test_change_color   function (below).
         #   Third, implement and test this method.
         ################################################################
+        # for k in range(index_of_color):
+        #     self.index_of_color = index_of_color
+        #     self.circle.fill_color = index_of_color[k]
 
     def change_to_original_color(self):
         """
@@ -435,11 +437,12 @@ class CircleChanger(object):
                was constructed.
         """
         ################################################################
-        # TODO: 8.
+        # DONE: 8.
         #   First, READ the doc-string (specification) above.
         #   Second, READ the   run_test_change_to_original_color   function
         #   (below).  Third, implement and test this method.
         ################################################################
+        self.circle.fill_color = self.start_color
 
     def change_to_next_color_in_tuple(self):
         """
@@ -474,12 +477,13 @@ class CircleChanger(object):
         fill color have no effect on or interaction with this method.
         """
         ################################################################
-        # TODO: 9.
+        # DONE: 9.
         #   First, READ the doc-string (specification) above.
         #   Second, READ the   run_test_change_to_next_color_in_tuple
         #   function (below).  Third, implement and test this method.
         ################################################################
-
+        for k in range(len(self.colors)):
+            self.circle.fill_color = self.colors[k]
 
 ########################################################################
 # The TEST functions for the  CircleChanger  class begin here.
