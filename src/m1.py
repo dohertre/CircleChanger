@@ -368,7 +368,7 @@ class CircleChanger(object):
                      -- the center of this CircleChanger's circle to
                      -- the center of the other CircleChanger's circle.
                 -- has 'red' as its fill color
-             -- whose tuple of colors a new tuple
+             -- whose tuple of colors is a new tuple
                   that is this CircleChanger's tuple of colors
                   plus (that is, concatenated with)
                   the other CircleChanger's tuple of colors.
@@ -401,7 +401,7 @@ class CircleChanger(object):
 
         new_circle = rg.Circle(new_point, new_radius)
         new_circle.fill_color = 'red'
-        new_circle.outline_color = self.tuple
+        new_circle.tuple = self.tuple + self.tuple
         return new_circle
 
     def change_color(self, index_of_color):
