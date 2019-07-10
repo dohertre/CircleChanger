@@ -32,10 +32,10 @@ def main():
     #     run_test_get_distance_from()
     # if m1_tests.is_implemented('swell_or_shrink_once'):
     #     run_test_swell_or_shrink_once()
-    if m1_tests.is_implemented('swell_or_shrink_repeatedly', 4):
-        run_test_swell_or_shrink_repeatedly()
-    # if m1_tests.is_implemented('swallow'):
-    #     run_test_swallow()
+    # if m1_tests.is_implemented('swell_or_shrink_repeatedly', 4):
+    #     run_test_swell_or_shrink_repeatedly()
+    if m1_tests.is_implemented('swallow'):
+        run_test_swallow()
     # if m1_tests.is_implemented('change_color'):
     #     run_test_change_color()
     # if m1_tests.is_implemented('change_to_original_color'):
@@ -110,6 +110,7 @@ class CircleChanger(object):
             self.colors = colors
             self.circle.outline_color = colors[k]
         self.start_color = fill_color
+        self.tuple = self.colors
 
     def __repr__(self):
         """
@@ -378,7 +379,7 @@ class CircleChanger(object):
             :rtype CircleChanger
         """
         ################################################################
-        # TODO: 6.
+        # DONE: 6.
         #   First, READ the doc-string (specification) above.
         #   Second, READ the   run_test_swallow   function (below).
         #   Third, implement and test this method.
@@ -388,16 +389,20 @@ class CircleChanger(object):
         #   the center and radius of the new CircleChanger.
         #   NO CREDIT if you use the distance formula here.
         ################################################################
-        new_x = (self.center.x + other_circle_changer.center.x) / 2
-        new_y = (self.center.y + other_circle_changer.center.y) / 2
+        x1 = self.center.x
+        y1 = self.center.y
 
-        radius_x = abs(self.center.x - other_circle_changer.center.x)
-        radius_y = abs(self.center.y - other_circle_changer.center.y)
+        x2 = other_circle_changer.center.x
+        y2 = other_circle_changer.center.y
 
-        new_radius = (((radius_x ** 2) + (radius_y ** 2)) ** 0.5) / 2
+        new_point = rg.Point.halfway_to(rg.Point(x1, y1), rg.Point(x2, y2))
 
-        self.circle = rg.Circle(rg.Point(new_x, new_y), new_radius)
-        self.circle.fill_color = 'red'
+        new_radius = (CircleChanger.get_distance_from(self, rg.Point(x2, y2))) / 2
+
+        new_circle = rg.Circle(new_point, new_radius)
+        new_circle.fill_color = 'red'
+        new_circle.outline_color = self.tuple
+        return new_circle
 
     def change_color(self, index_of_color):
         """
