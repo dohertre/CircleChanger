@@ -34,8 +34,8 @@ def main():
     #     run_test_swell_or_shrink_once()
     # if m1_tests.is_implemented('swell_or_shrink_repeatedly', 4):
     #     run_test_swell_or_shrink_repeatedly()
-    if m1_tests.is_implemented('swallow'):
-        run_test_swallow()
+    # if m1_tests.is_implemented('swallow'):
+    #     run_test_swallow()
     # if m1_tests.is_implemented('change_color'):
     #     run_test_change_color()
     # if m1_tests.is_implemented('change_to_original_color'):
