@@ -32,16 +32,16 @@ def main():
     #     run_test_get_distance_from()
     # if m1_tests.is_implemented('swell_or_shrink_once'):
     #     run_test_swell_or_shrink_once()
-    # if m1_tests.is_implemented('swell_or_shrink_repeatedly', 4):
-    #     run_test_swell_or_shrink_repeatedly()
+    if m1_tests.is_implemented('swell_or_shrink_repeatedly', 4):
+        run_test_swell_or_shrink_repeatedly()
     # if m1_tests.is_implemented('swallow'):
     #     run_test_swallow()
-    if m1_tests.is_implemented('change_color'):
-        run_test_change_color()
-    if m1_tests.is_implemented('change_to_original_color'):
-        run_test_change_to_original_color()
-    if m1_tests.is_implemented('change_to_next_color_in_tuple'):
-        run_test_change_to_next_color_in_tuple()
+    # if m1_tests.is_implemented('change_color'):
+    #     run_test_change_color()
+    # if m1_tests.is_implemented('change_to_original_color'):
+    #     run_test_change_to_original_color()
+    # if m1_tests.is_implemented('change_to_next_color_in_tuple'):
+    #     run_test_change_to_next_color_in_tuple()
 
 
 ########################################################################
@@ -101,6 +101,9 @@ class CircleChanger(object):
         # the SPECIFICATION of the method.  That is why you read the
         # TEST function before implementing the method that it tests.
         ################################################################
+        center = rg.Point(x, y)
+        self.center = center
+        self.start_radius = radius
         self.circle = rg.Circle(rg.Point(x, y), radius)
         self.circle.fill_color = fill_color
         for k in range(len(colors)):
@@ -210,10 +213,8 @@ class CircleChanger(object):
         x = self.circle.center.x
         y = self.circle.center.y
 
-        dis_x = abs(x - point.x)
-        dis_y = abs(y - point.y)
-
-        return ((dis_x ** 2) + (dis_y ** 2)) ** 0.5
+        dis = rg.Point.get_distance_from(rg.Point(x, y), point)
+        return dis
 
     def swell_or_shrink_once(self, amount_to_swell_or_shrink):
         """
@@ -290,9 +291,7 @@ class CircleChanger(object):
         self.circle.fill_color = self.colors[r_index]
         return self.circle.radius
 
-    def swell_or_shrink_repeatedly(self,
-                                   amount_to_swell_or_shrink,
-                                   times_to_swell_or_shrink):
+    def swell_or_shrink_repeatedly(self, amount_to_swell_or_shrink, times_to_swell_or_shrink):
         """
         What comes in:
           -- self
@@ -343,12 +342,15 @@ class CircleChanger(object):
             :type times_to_swell_or_shrink:  int
         """
         ################################################################
-        # TODO: 5.
+        # DONE: 5.
         #   First, READ the doc-string (specification) above.
         #   Second, READ the  run_test_swell_or_shrink_repeatedly  function
         #   (below).  Third, implement and test this method.
         ################################################################
-        j = CircleChanger.swell_or_shrink_once(self.amount_to_swell_or_shrink)
+
+        for k in range(times_to_swell_or_shrink):
+            j = CircleChanger.swell_or_shrink_once(self, amount_to_swell_or_shrink)
+            return j, self.start_radius
 
     def swallow(self, other_circle_changer):
         """
